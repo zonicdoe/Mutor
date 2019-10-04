@@ -227,8 +227,8 @@ function renderPostControls(){
         // Toolbar's buttons setup:
       toolbars[ toolbars.length - 1 ].childNodes[0].childNodes[0].className = DOM_POST_FULLSCREEN_BUTTON_CLASS;
 			toolbars[ toolbars.length - 1 ].childNodes[1].childNodes[0].className = DOM_POST_DOWNLOAD_BUTTON_CLASS;
-			toolbars[ toolbars.length - 1 ].childNodes[0].childNodes[0].title = '__MSG_postToolbarFullscreen__';
-			toolbars[ toolbars.length - 1 ].childNodes[1].childNodes[0].title = '__MSG_postToolbarDownload__';
+			toolbars[ toolbars.length - 1 ].childNodes[0].childNodes[0].title = chrome.i18n.getMessage("postToolbarFullscreen");
+			toolbars[ toolbars.length - 1 ].childNodes[1].childNodes[0].title = chrome.i18n.getMessage('postToolbarDownload');
 			toolbars[ toolbars.length - 1 ].childNodes[0].childNodes[0].src = IG_URL + IG_SPRITESA_PATH;
 			toolbars[ toolbars.length - 1 ].childNodes[1].childNodes[0].src = IG_URL + IG_SPRITESA_PATH;
 
