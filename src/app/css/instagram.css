@@ -1,0 +1,97 @@
+.white{
+  -webkit-filter: invert(100%);
+  filter: invert(100%);
+}
+
+/************************************************************************************
+  Media viewer
+*************************************************************************************/
+#mt-super-modal{
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  width: 0%;
+  height: 100%;
+  opacity: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: opacity 0.5s linear;
+}
+
+#mt-modal-body{
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	display: inline-block;
+	-ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.media-container{
+	position: relative;
+}
+
+.media-container video, .media-container img, .media-container iframe{
+	height: 90%;
+	height: 90vh;
+}
+
+.media-container iframe{
+  width: 400px;
+  background-color: #FFFFFF;
+  border-radius: 12px;
+}
+
+.modal-controls div{
+  position: absolute;
+  width: 20px;
+  height: 20px;
+	top: 0;
+	right: 0;
+	z-index: 10000;
+  background: rgba(0, 0, 0, 0.38);
+	cursor: pointer;
+  overflow: hidden;
+}
+
+.modal-controls div img{
+  position: absolute;
+  width: 364px;
+  height: 350px;
+  top: -257px;
+  right: -51px;
+}
+
+.hide { display: none; }
+.show { display: block; }
+
+/************************************************************************************
+POSTS TOOLBAR
+************************************************************************************/
+.mt-toolbar{
+  position: absolute;
+  display: block;
+  z-index: 1;
+  padding: 3px;
+}
+.mt-toolbar div {
+  display: block;
+  position: relative;
+  width: 24px;
+  height: 24px;
+  float: left;
+  background: rgba(0, 0, 0, 0.38);
+  margin-right: 3px;
+  overflow: hidden;
+  cursor: pointer;
+}
+.mt-control-fullscreen{
+  position: absolute;
+  top: -326px;
+  left: -104px;
+}
+.mt-control-download{
+  position: absolute;
+  top: -300px;
+  left: -181px;
+}

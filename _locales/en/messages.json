@@ -1,0 +1,15 @@
+{
+  "appDescription": {
+    "message": "Extend the functionality of Instagram web.",
+    "description": "Extension's description."
+  },
+
+  "postToolbarFullscreen": {
+    "message": "Fullscreen",
+    "description": "Fullscreen button's caption of each post."
+  },
+  "postToolbarDownload": {
+    "message": "Download",
+    "description": "Download button's caption of each post."
+  }
+}
