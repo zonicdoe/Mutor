@@ -1,0 +1,26 @@
+{
+  "name": "Mutor",
+  "version": "1.0.0",
+  "manifest_version": 2,
+  "description": "Extend the functionality of Instagram web.",
+  "homepage_url": "https://github.com/zonicdoe/Mutor",
+  "default_locale": "en",
+
+  "background": {
+    "scripts": [
+      "src/app/js/background.js"
+    ],
+    "persistent": true
+  },
+
+  "permissions": [
+
+  ],
+
+  "content_scripts": [
+    {
+      "matches": ["*://*.instagram.com/*"],
+      "css": ["src/app/css/instagram.css"]
+    }
+  ]
+}
