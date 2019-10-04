@@ -1,3 +1,11 @@
+.red{
+  -webkit-filter: invert(40%) grayscale(100%) brightness(40%) sepia(100%) hue-rotate(-50deg) saturate(400%) contrast(2);
+  filter: grayscale(100%) brightness(40%) sepia(100%) hue-rotate(-50deg) saturate(600%) contrast(0.8);
+}
+.green{
+  -webkit-filter: grayscale(100%) brightness(40%) sepia(100%) hue-rotate(50deg) saturate(1000%) contrast(0.8);
+  filter: grayscale(100%) brightness(40%) sepia(100%) hue-rotate(50deg) saturate(1000%) contrast(0.8);
+}
 .white{
   -webkit-filter: invert(100%);
   filter: invert(100%);
@@ -64,6 +72,66 @@
 
 .hide { display: none; }
 .show { display: block; }
+
+/************************************************************************************
+AVATAR TOOLBAR
+************************************************************************************/
+.mt-avatar-overlay{
+  background: rgba(0, 0, 0, 0.3);
+  width: 100%;
+  height: 110%;
+  position: absolute;
+  z-index: 1;
+  top: -15px;
+  border-radius: 50%;
+}
+
+.mt-stories-launcher{
+  cursor: pointer;
+  left: 50%;
+  width: 165px;
+  position: absolute;
+  height: 165px;
+  background: rgba(0,0,0,0.5);
+  border: none;
+  margin-left: -82px;
+  top: 5px;
+  border-radius: 50%;
+  outline: none;
+}
+
+.mt-avatar-toolbar{
+  display: block;
+  position: absolute;
+  top: 155px;
+  left: 50%;
+  margin-left: -24px;
+}
+
+.mt-avatar-toolbar div{
+  display: block;
+  float: left;
+  width: 24px;
+  height: 24px;
+  background: rgba(0, 0, 0, 1);
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.mt-control-avatar-max{
+  position: absolute;
+  bottom: -64px;
+  left: -572px;
+  width: 600px;
+  cursor: zoom-in;
+}
+
+.mt-control-incognito-indicator{
+  position: absolute;
+  left: -153px;
+  bottom: -46px;
+  cursor: help;
+}
 
 /************************************************************************************
 POSTS TOOLBAR

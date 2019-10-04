@@ -6,16 +6,21 @@
   "homepage_url": "https://github.com/zonicdoe/Mutor",
   "default_locale": "en",
 
+  "permissions": [
+    "storage"
+  ],
+
+  "browser_action": {
+    "default_title": "Mutor options",
+    "default_popup": "src/menu/options.html"
+  },
+
   "background": {
     "scripts": [
       "src/app/js/background.js"
     ],
     "persistent": true
   },
-
-  "permissions": [
-
-  ],
 
   "content_scripts": [
     {

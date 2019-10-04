@@ -1,4 +1,19 @@
 var mediaViewer; // Player handler
+// Configuration:
+var config = {
+	incognitoMode: false,
+	unprotected: false
+};
+// Last profile visited:
+var cachedProfile = {
+	userData: {username: ''},
+	businessInfo: null,
+	reelInfo: {
+		reel: {
+			latest_reel_media: null
+		}
+	}
+};
 
 /* Injects modal player for fullscreen view */
 function injectMediaViewer(){
@@ -44,7 +59,78 @@ function renderControls(url){
 
 window.onload = function(){
   hookPage(); // Checks page changing.
-  //
+  // Renders current page controls:
   mediaViewer = new modal(OVERLAY_ID, MODAL_ID);
   renderControls(document.location.href);
 };
+
+/************************************************************************************
+  Critical scripts injection.
+*************************************************************************************/
+/* Intercepts AJAX requests from instagram and prevents
+ 	 the view logging in Instagram stories (incognito mode) */
+const AJAXInterceptor = function AJAXInterceptor(ajaxEventName){
+	var XHR = XMLHttpRequest.prototype;
+  var send = XHR.send;
+  var open = XHR.open;
+
+  XHR.open = function(method, url) {
+    this.url = url; // the request url
+    return open.apply(this, arguments);
+  }
+
+  XHR.send = function(data) {
+		// Blocks log request for storie views:
+		if( this.url.match(REGEX_STORIES_VIEW_LOGGER) != null && _sharedData.config.incognito_mode){
+			console.log('Blocking view logger...');
+		}
+		else{
+			return send.apply(this, arguments);
+		}
+
+	};
+
+	return true;
+};
+
+function injectScripts(){
+	var script = document.createElement('script');
+	script.id = DOM_EMBEDED_SCRIPTS;
+  script.type = 'text/javascript';
+  script.innerHTML = `
+	const REGEX_STORIES_VIEW_LOGGER = ${REGEX_STORIES_VIEW_LOGGER};
+	_sharedData.config.incognito_mode = ${config.incognitoMode};
+
+	${AJAXInterceptor}
+
+	if( AJAXInterceptor('${EVENT_AJAX_REQUEST}') ){
+		window.dispatchEvent( new CustomEvent('${MSG_UNPROTECT_AVATAR}', {}) );
+	}
+	`;
+	document.head.prepend(script);
+	console.log('Embeded scripts ready.');
+}
+
+/************************************************************************************
+Message listeners
+*************************************************************************************/
+addEventListener(MSG_UNPROTECT_AVATAR,
+	function(){
+		config.unprotected = true;
+		console.log('XMLHTTP requests methods overriden, unprotecting links...');
+	}
+);
+// Injects critical scripts just after the DOM is loaded:
+addEventListener("DOMContentLoaded", function() {
+	injectScripts();
+});
+
+
+chrome.storage.sync.get(
+	{
+		incognitoMode: false
+	},
+	function(items) {
+			config.incognitoMode = items.incognitoMode
+	}
+);

@@ -11,5 +11,18 @@
   "postToolbarDownload": {
     "message": "Download",
     "description": "Download button's caption of each post."
+  },
+
+  "avatarToolbarFullscreen": {
+    "message": "Fullscreen",
+    "description": "Fullscreen button's caption of avatar."
+  },
+  "avatarToolbarIncognitoActive": {
+    "message": "Incognito mode avtive",
+    "description": "Incognito mode avatar indicator."
+  },
+  "avatarToolbarIncognitoDisabled": {
+    "message": "Incognito mode disabled",
+    "description": "Incognito mode avatar indicator."
   }
 }
