@@ -11,6 +11,9 @@ Extend the functionality of Instagram web.
 
 ## How to install
 1.- Go to the extension settings on the top right corner menu of Google Chrome.
+
 2.- In the settings page, activate "Developer mode" at the top right corner.
+
 3.- In the same page, click on the button labeled as "Load unpacked".
+
 4.- Navigate to the location where you saved the extension and select the extension folder.
