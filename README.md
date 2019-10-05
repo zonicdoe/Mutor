@@ -7,13 +7,13 @@ Extend the functionality of Instagram web.
 
 ## Main features
 ### Anonymous Instagram Stories viewer.
-A feature that allows you to watch any Instagram story without being registered in the story's owner viewer list (Already fully implemented).
+A feature that allows you to watch any Instagram story without being registered in the owner's viewer list (Already fully implemented).
 ### Fullscreen media viewer, for pictures and videos.
 Bigger size videos and pictures.
 ### High-quality picture and video downloading.
 Download video and pictures from any profile. 
 ### Instagram Business Accounts info scrapper.
-The extension shows the additional available information of business accounts such as category, address (with Google Maps link), phone number, and email, get it touch in one click.
+The extension shows the additional available information of business accounts such as category, address (with Google Maps link), phone number, and email, get in touch in one click.
 This data is only available in the app, but this extension injects it to the web version.
 
 ## How to install
