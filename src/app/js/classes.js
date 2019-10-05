@@ -156,3 +156,16 @@ class modal{
 		this.overlay.style.opacity = 1;
 	}
 }
+
+class user{
+	userData = {
+    id: null,
+    username: '',
+  	address: {}
+  };
+	reelInfo = null;
+	
+	user(){
+
+	}
+}

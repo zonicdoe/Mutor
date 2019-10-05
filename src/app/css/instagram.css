@@ -134,7 +134,27 @@ AVATAR TOOLBAR
 }
 
 /************************************************************************************
-POSTS TOOLBAR
+  Profile info
+************************************************************************************/
+.mt-account-type{
+  display: inline-block;
+  width: 100%;
+  color: #999;
+}
+
+.mt-contact-info{
+  display: inline-block;
+  width: 100%;
+}
+
+.mt-contact-info a{
+  display: block;
+  float: left;
+  margin-right: 5px;
+}
+
+/************************************************************************************
+  POSTS TOOLBAR
 ************************************************************************************/
 .mt-toolbar{
   position: absolute;
