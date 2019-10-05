@@ -6,8 +6,10 @@ Extend the functionality of Instagram web.
 - [How to install](#how-to-install)
 
 ## Main features
+### Anonymous Instagram Stories viewer.
 ### Fullscreen media viewer, for pictures and videos.
 ### High-quality picture and video downloading.
+### Instagram Business Accounts info scrapper.
 
 ## How to install
 1.- Go to the extension settings on the top right corner menu of Google Chrome.<br>
