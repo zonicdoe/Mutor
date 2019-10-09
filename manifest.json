@@ -6,6 +6,12 @@
   "homepage_url": "https://github.com/zonicdoe/Mutor",
   "default_locale": "en",
 
+  "icons": {
+    "16": "src/app/img/icons/mutor16.png",
+    "48": "src/app/img/icons/mutor48.png",
+    "128": "src/app/img/icons/mutor128.png"
+  },
+
   "permissions": [
     "storage",
     "webRequest",
