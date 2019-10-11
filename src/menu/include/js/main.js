@@ -20,7 +20,14 @@ function init(){
   var incognitoModeCheckBox = document.getElementById('regIncognitoMode');
   incognitoModeCheckBox.onchange = function(){
     saveChanges( {incognitoMode: incognitoModeCheckBox.checked} );
-  }
+    chrome.tabs.query({url: "*://*.instagram.com/*", currentWindow: true}, function(tabs) {
+      tabs.forEach(
+        function(tab) {
+          chrome.tabs.update(tab.id, {url: tab.url});
+        }
+      );
+    });
+  };
 
   restoreOptions();
   document.getElementsByTagName('body')[0].style.opacity = 1;

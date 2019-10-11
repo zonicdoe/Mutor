@@ -1,8 +1,8 @@
 <h1 align="center">
-  <img src="https://raw.githubusercontent.com/zonicdoe/resources/master/Mutor/IMG/mutorb256.png">&nbsp&nbsp<br><br>
-  Mutor
-  <br>
+  <img src="https://raw.githubusercontent.com/zonicdoe/resources/master/Mutor/IMG/mutorb256.png">
 </h1>
+
+# **Mutor**
 
 Extend the functionality of Instagram web.
 
