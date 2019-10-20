@@ -86,9 +86,9 @@ const AJAXInterceptor = function AJAXInterceptor(ajaxEventName){
 	    }));
   	});
 
-		// Blocks log request for storie views:
+		// Blocks log request for storie views (First line of defense):
 		if( this.url.match(REGEX_STORIES_VIEW_LOGGER) != null && _sharedData.config.incognito_mode){
-			console.log('Blocking view logger...');
+			console.log('Blocking view logger in the first atempt...');
 		}
 		else{
 			return send.apply(this, arguments);
@@ -164,7 +164,7 @@ window.addEventListener(EVENT_SEND_SHARED_DATA, function(response){
 
 chrome.storage.sync.get(
 	{
-		incognitoMode: false
+		incognitoMode: true
 	},
 	function(items) {
 			config.incognitoMode = items.incognitoMode

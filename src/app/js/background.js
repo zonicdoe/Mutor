@@ -3,6 +3,7 @@ const IG_MOBILE_QUERY_SERVER = 'https://i.instagram.com/api/v1/';
 const MOBILE_CHROME_USER_AGENT = 'Chrome/51.0.2704.81 Mobile Safari/537.36 Instagram 8.4.0';
 const MSG_GET_BUSINESS_INFO = 'MSG_GET_BUSINESS_INFO';
 const REGEX_DIRECT_TABS = /.*.instagram.com\/direct\/(inbox|t|new|requests)\/*/i;
+const REGEX_STORIES_VIEW_LOGGER = /.*\/*stories\/reel\/seen\/*(?!.)/i;
 
 class response{
   constructor(){
@@ -12,6 +13,25 @@ class response{
   }
 }
 
+var incognitoMode = true;
+
+/* Listener to change incognitoModeState every time
+a new instagram page is visited */
+chrome.tabs.onUpdated.addListener(
+  function(tabId, changeInfo, tab) {
+    if(tab.url.indexOf(IG_DOMAIN ) > -1){
+      chrome.storage.sync.get(
+      	{
+      		incognitoMode: true
+      	},
+      	function(items) {
+      			incognitoMode = items.incognitoMode
+      	}
+      );
+    }
+  }
+);
+
 // Network filter for listen web request.
 const networkFilter = { urls: ['*://*.instagram.com/*'] };
 chrome.webRequest.onBeforeSendHeaders.addListener(
@@ -20,7 +40,6 @@ chrome.webRequest.onBeforeSendHeaders.addListener(
       details.url.match(REGEX_DIRECT_TABS) != null ||
       details.url.indexOf(IG_MOBILE_QUERY_SERVER) > -1
     ){
-      console.log(details.url);
       for (var i = 0; i < details.requestHeaders.length; i++) {
         var name = details.requestHeaders[i].name.toLowerCase();
         if (name === "user-agent") {
@@ -32,6 +51,21 @@ chrome.webRequest.onBeforeSendHeaders.addListener(
   },
   networkFilter,
   ["blocking", "requestHeaders"]
+);
+
+// Blocks log request for storie views (second and last line of defense):
+chrome.webRequest.onBeforeRequest.addListener(
+  function(details) {
+    if (details.url.match(REGEX_STORIES_VIEW_LOGGER) != null) {
+      if (incognitoMode) {
+          // body...
+          console.log('Blocking view logger in second atempt...');
+          return {cancel: true};
+      }
+    }
+  },
+  networkFilter,
+  ["blocking"]
 );
 
 function getBussinesInfo(userID){
